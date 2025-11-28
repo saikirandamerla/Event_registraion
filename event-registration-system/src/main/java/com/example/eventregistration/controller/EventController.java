@@ -35,7 +35,7 @@ public class EventController {
     }
 
     @PostMapping
-    public String saveEvent(@Valid @ModelAttribute("event") Event event, BindingResult result) {
+    public String saveEvent(@Valid @ModelAttribute Event event, BindingResult result) {
         if (result.hasErrors()) {
             return "event-form";
         }
@@ -51,7 +51,7 @@ public class EventController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateEvent(@PathVariable Long id, @Valid @ModelAttribute("event") Event event, BindingResult result) {
+    public String updateEvent(@PathVariable Long id, @Valid @ModelAttribute Event event, BindingResult result) {
         if (result.hasErrors()) {
             return "event-form";
         }

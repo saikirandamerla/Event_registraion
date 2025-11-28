@@ -1,6 +1,7 @@
 package com.example.eventregistration.service;
 
 import com.example.eventregistration.model.Registration;
+import com.example.eventregistration.model.User;
 import com.example.eventregistration.repository.RegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,14 @@ public class RegistrationService {
 
     public List<Registration> getAllRegistrations() {
         return registrationRepository.findAll();
+    }
+
+    public List<Registration> getRegistrationsByUser(User user) {
+        return registrationRepository.findByUser(user);
+    }
+
+    public List<Registration> getRegistrationsByEvent(Long eventId) {
+        return registrationRepository.findByEventId(eventId);
     }
 
     public Optional<Registration> getRegistrationById(Long id) {

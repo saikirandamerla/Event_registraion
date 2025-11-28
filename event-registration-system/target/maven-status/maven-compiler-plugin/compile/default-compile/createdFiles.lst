@@ -1,7 +1,15 @@
 com\example\eventregistration\controller\RegistrationController.class
+com\example\eventregistration\controller\ProfileController.class
+com\example\eventregistration\controller\AuthController.class
 com\example\eventregistration\repository\EventRepository.class
-com\example\eventregistration\service\EventService.class
+com\example\eventregistration\config\SecurityConfig.class
+com\example\eventregistration\repository\UserRepository.class
 com\example\eventregistration\model\Event.class
+com\example\eventregistration\model\User.class
+com\example\eventregistration\service\UserService.class
+com\example\eventregistration\controller\AdminController.class
+com\example\eventregistration\service\EventService.class
+com\example\eventregistration\config\DataInitializer.class
 com\example\eventregistration\service\RegistrationService.class
 com\example\eventregistration\model\Registration.class
 com\example\eventregistration\repository\RegistrationRepository.class

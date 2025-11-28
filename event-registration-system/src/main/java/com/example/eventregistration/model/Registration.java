@@ -1,9 +1,8 @@
 package com.example.eventregistration.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 public class Registration {
@@ -12,25 +11,29 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is required")
-    private String name;
-
-    @NotBlank(message = "Email is required")
-    @Email(message = "Email should be valid")
-    private String email;
+    @NotNull(message = "User is required")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @NotNull(message = "Event is required")
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event event;
 
-    // Constructors
-    public Registration() {}
+    private LocalDateTime registrationDate;
 
-    public Registration(String name, String email, Event event) {
-        this.name = name;
-        this.email = email;
+    private String status = "CONFIRMED";
+
+    // Constructors
+    public Registration() {
+        this.registrationDate = LocalDateTime.now();
+    }
+
+    public Registration(User user, Event event) {
+        this.user = user;
         this.event = event;
+        this.registrationDate = LocalDateTime.now();
     }
 
     // Getters and Setters
@@ -42,20 +45,12 @@ public class Registration {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Event getEvent() {
@@ -64,5 +59,21 @@ public class Registration {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

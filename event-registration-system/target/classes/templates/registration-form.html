@@ -1,55 +1,62 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Register for Event</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/}">Event Registration System</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/events}">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/registrations}">Registrations</a>
-                    </li>
-                </ul>
+            <a class="navbar-brand" th:href="@{/}"><i class="fas fa-calendar-alt me-2"></i>Event Registration System</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" th:href="@{/events}">Events</a>
+                <a class="nav-link" th:href="@{/registrations}">My Registrations</a>
+                <a class="nav-link" th:href="@{/profile}">Profile</a>
+                <a class="nav-link" sec:authorize="hasRole('ADMIN')" th:href="@{/admin}">Admin</a>
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h1 th:text="${registration.id != null} ? 'Edit Registration' : 'Register for Event'"></h1>
-        <form th:action="${registration.id != null} ? @{/registrations/update/{id}(id=${registration.id})} : @{/registrations}" th:object="${registration}" method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" th:field="*{name}" required>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i>Register for Event</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <h5><i class="fas fa-calendar-alt me-2"></i><span th:text="${event.name}"></span></h5>
+                            <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i><span th:text="${event.location}"></span></p>
+                            <p class="mb-1"><i class="fas fa-clock me-2"></i><span th:text="${#temporals.format(event.date, 'MMM dd, yyyy HH:mm')}"></span></p>
+                            <p class="mb-0"><strong>Description:</strong> <span th:text="${event.description}"></span></p>
+                        </div>
+
+                        <form th:action="@{/registrations}" th:object="${registration}" method="post">
+                            <input type="hidden" th:field="*{event.id}">
+                            
+                            <div class="alert alert-success">
+                                <i class="fas fa-info-circle me-2"></i>
+                                You are registering as <strong sec:authentication="principal.username"></strong>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check me-2"></i>Confirm Registration
+                                </button>
+                                <a th:href="@{/events}" class="btn btn-secondary">
+                                    <i class="fas fa-times me-2"></i>Cancel
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" th:field="*{email}" required>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-            </div>
-            <div class="mb-3">
-                <label for="event" class="form-label">Event</label>
-                <select class="form-select" id="event" th:field="*{event}" required>
-                    <option value="">Select an event</option>
-                    <option th:each="event : ${events}" th:value="${event.id}" th:text="${event.name}"></option>
-                </select>
-                <div class="invalid-feedback" th:if="${#fields.hasErrors('event')}" th:errors="*{event}"></div>
-            </div>
-            <button type="submit" class="btn btn-primary" th:text="${registration.id != null} ? 'Update' : 'Register'"></button>
-            <a th:href="@{/registrations}" class="btn btn-secondary">Cancel</a>
-        </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

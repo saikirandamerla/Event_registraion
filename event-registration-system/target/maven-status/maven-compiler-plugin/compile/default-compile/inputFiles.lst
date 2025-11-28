@@ -1,9 +1,17 @@
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\model\Event.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\service\EventService.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\controller\RegistrationController.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\EventRegistrationApplication.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\repository\EventRepository.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\repository\RegistrationRepository.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\model\Registration.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\service\RegistrationService.java
-C:\Users\rohit\Downloads\Java full stack\event-registration-system\src\main\java\com\example\eventregistration\controller\EventController.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\config\DataInitializer.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\config\SecurityConfig.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\controller\AdminController.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\controller\AuthController.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\controller\EventController.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\controller\ProfileController.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\controller\RegistrationController.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\EventRegistrationApplication.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\model\Event.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\model\Registration.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\model\User.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\repository\EventRepository.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\repository\RegistrationRepository.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\repository\UserRepository.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\service\EventService.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\service\RegistrationService.java
+C:\rohit\Event_registraion\event-registration-system\src\main\java\com\example\eventregistration\service\UserService.java
